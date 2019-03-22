@@ -1,0 +1,41 @@
+body{
+    margin:0;
+    padding: 20px;
+}
+.item {
+    width: 250px;
+    margin-bottom: 10px;
+    border: 1px solid lightgrey;
+    padding: 5px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+.item:hover {
+    background-color: aliceblue;
+}
+.catalog{
+
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    width: 1040px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+button.order {
+    position: absolute;
+    bottom: 20px;
+    right: 15px;
+}
+a.edit {
+    width: 118px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+img.logo{
+    width: 110px;
+    padding: 30px;
+}
