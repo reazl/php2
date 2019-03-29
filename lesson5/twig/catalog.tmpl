@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../public/style/main.css">
+    <title>Каталог</title>
+</head>
+<body>
+{% include 'header.tmpl' %}
+<div class='catalog'>
+
+    {% for item in catalog %}
+
+    <div class="item">
+        <a href="?c=product&a=card&id={{ item.id }}">
+            <h2>{{ item.name }}</h2>
+        </a>
+        <p>{{ item.description}}</p>
+        <p>Стоимость: {{ item.price}} рубля(ей)</p>
+        <button class="order">Заказать</button>
+    </div>
+        {% endfor %}
+
+
+</div>
+</body>
+</html>
