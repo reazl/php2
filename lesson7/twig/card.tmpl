@@ -1,0 +1,34 @@
+<h2>Наименование: {{ product.name }}</h2>
+<p>Описание: {{ product.description }}</p>
+<p>Категория: {{ category }}</p>
+<p>Цена: {{ product.price }}</p>
+
+    <input type="text" id="id" name="id" hidden value="{{product.id}}">
+<button class="action" value="Заказать">Заказать</button>
+
+{% if username == 'admin' %}
+<a class="edit" href="/product/edit/?id={{ product.id }}">Редактировать</a>
+{% endif %}
+<script>
+    $(document).ready(function(){
+        $(".action").on('click', function(){
+            let id = $('#id').val();
+            console.log(id);
+            $.ajax({
+                url: "../AddBasket/",
+                type: "POST",
+                dataType : "json",
+                data:{
+                    id: id
+                },
+                error: function() {
+                    alert('error');},
+                success: function(answer){
+                    {window.location.reload()}
+                }
+
+            })
+        });
+
+    });
+</script>
