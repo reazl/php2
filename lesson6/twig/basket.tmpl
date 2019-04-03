@@ -1,0 +1,12 @@
+<div class="basket">
+{% for good in basket %}
+    <div class="basket-item">
+        Товар: {{ good.name }}
+        Цена: {{ good.price }} руб.
+        Количество: {{ good.count }} шт.
+        <!--Стоимость: {{ item.price }}*{{ item.count }}-->
+        <a href="">[удалить]</a>
+    </div>
+
+    {% endfor %}
+</div>

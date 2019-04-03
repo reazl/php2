@@ -1,0 +1,39 @@
+<div class="basket">
+
+{% for item in basket %}
+    <div class="basket-item">
+        Товар: {{ item.name }}
+        Цена: {{ item.price }} руб.
+        Количество: {{ item.0 }} шт.
+        Стоимость: {{ "#{item.price}" * "#{item.0}" }}
+        <button id="{{ item.id }}" class="delete">Удалить</button>
+    </div>
+
+    {% endfor %}
+</div>
+
+
+<script>
+    $(document).ready(function(){
+        $(".delete").on('click', function(){
+            let id = this.id;
+
+            $.ajax({
+                url: "DelBasket/",
+                type: "POST",
+                dataType : "json",
+                data:{
+                    id: id
+                },
+                error: function() {
+                    alert('error');},
+                success: function(answer){
+                    {window.location.reload()}
+                }
+
+            })
+        });
+
+    });
+</script>
+

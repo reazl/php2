@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../public/style/main.css">
+    <title>Каталог</title>
+</head>
+<body>
+{% include 'header.tmpl' %}
+<h2>Наименование: {{ product.name }}</h2>
+<p>Описание: {{ product.description }}</p>
+<p>Цена: {{ product.price }}</p>
+<a class="edit" href="?c=product&a=edit&id={{ product.id }}">Редактировать</a>
+
+
+</body>
+</html>
