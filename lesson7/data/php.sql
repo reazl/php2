@@ -2,10 +2,10 @@
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3305
--- Время создания: Мар 15 2019 г., 14:51
--- Версия сервера: 10.3.13-MariaDB
--- Версия PHP: 7.1.22
+-- Хост: 127.0.0.1:3307
+-- Время создания: Апр 03 2019 г., 16:03
+-- Версия сервера: 8.0.15
+-- Версия PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,26 @@ SET time_zone = "+00:00";
 --
 -- База данных: `php`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `basket`
+--
+
+CREATE TABLE `basket` (
+  `id` int(11) NOT NULL,
+  `session_id` text NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `count` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `basket`
+--
+
+INSERT INTO `basket` (`id`, `session_id`, `product_id`, `count`) VALUES
+(174, 'cm3513ef6buld5m01a1laoanogbaktkd', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -118,20 +138,56 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `category`) VALUES
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `login` text NOT NULL,
-  `pass` text NOT NULL
+  `pass` text NOT NULL,
+  `hash` text CHARACTER SET utf8 COLLATE utf8_general_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `pass`) VALUES
-(1, 'admin', '123'),
-(2, 'user', '4231');
+INSERT INTO `users` (`id`, `login`, `pass`, `hash`) VALUES
+(9, 'admin', '$2y$10$yHO1NnmsJyGlm61IyayYFuCsQ7mE1p5dc5/bdptcsl8OI8VGJSoI.', NULL),
+(10, 'user', '$2y$10$BaGOsrjxIVB.8mLCK5GrzupS2HTCnUka.k3wIr6s6c1ore26UIsTu', NULL),
+(11, '111', '$2y$10$4EjpDeohH7TZRX7/B.2aIuG5aFWIDFMQxDzlGpzIU1jGPRxZzlXzm', NULL),
+(12, '222', '$2y$10$o1brKujekAOGCarTjpPixutED2HOMTjy2Sgw7n7QeJ0wEVPv4MDBa', NULL),
+(13, '333', '$2y$10$mryrSBdy19/ANP/ycaLRQOcppLHogMhc2HHYQ6tbSE7K/DaCH5UNO', NULL),
+(14, '444', '$2y$10$iWeAkQ1pKT2Pbvh8JTuCD.Rzz21EgjeqRUN8KCFLYRQaPZpRJdIdG', '843017365c9cddd4a91fd9.28694037'),
+(15, '555', '$2y$10$ahDPFD2Qmdh.pMK0VKIxKewvgK68GKgkrm3hTYNrT9UYn/4pr8t2O', '971679945c9cde0d6cac82.52684992'),
+(16, '1234', '$2y$10$9PmdVqivgvj.TmdkAkbq.ObD92UOiJQ7gZu9sCeusHW8.5K6JnNIm', NULL),
+(17, '11111', '$2y$10$O01dI8Xi6rhfPh4VNZ39w.J.9kZVtiUDRAMstwm5FL3GgHV3rKfUC', NULL),
+(18, '', '$2y$10$btyRT2t67YKWGYo7YUz8PODGzuvbW89P6Exi.LitIyS5GjXxpss02', NULL),
+(19, '', '$2y$10$PbLYVo7NIXLRgmkrPRHKgu5LKttdU/6StIUqHGGzJhVGcZTu4Pxly', NULL),
+(20, 'admin', '$2y$10$2EpgXHSEraxFhKq0A55AG.myAoOOMhpjFunHCmmho.6iHZQeuCCEq', NULL),
+(21, 'admin', '$2y$10$Q2WW0zMTzblGcd5gKWOevOVqkBIHkMowb4P1VzAN7ZR8jXU3gk24W', NULL),
+(22, 'admin', '$2y$10$pjGn3V1gRERllJWYj1anFuHeUAJ894sDZgNNOL9K.wDH7cID6IlJe', NULL),
+(23, 'admin', '$2y$10$zuJUjmzp7VsiyVVEok.6rOfPD1/NdTdhG4mivhzuHknqeZu.YBmBi', NULL),
+(24, 'admin', '$2y$10$icaoX8S51TZJjVFvxqaDM.dwdIpDjs0Su9a61897rUc3S2qzahs06', NULL),
+(25, 'admin', '$2y$10$iaieXQNZurZr4Vwrhq5ou.jdfEhP6ILEQHQEiNutQeIZ3dc16ccHC', NULL),
+(26, 'admin', '$2y$10$/hC./2by/gFkkkkKnejc9em.VKeUGsW.EpuW1q3DPCBlEXXZng1xq', NULL),
+(27, 'admin', '$2y$10$F2hxp9fIOtoNBDLsHguM2ujCNF9/jUAhtnOiZTqHR0.d8CZn.ckIK', NULL),
+(28, 'admin', '$2y$10$eP1MtkJj49DKWIRQu.wjs.ZO6diJAK.sFr3om8LQC4A6.stGcu88K', NULL),
+(29, 'admin', '$2y$10$qM1Zvae2gpq2kWPasFChvut6sGE.JvM6iZzCJLM7/nfJ.CZKQL3gS', NULL),
+(30, 'admin', '$2y$10$UJqRHM8c1M4ffjcWfpMFLOzqbE4frN.YETpMp.xhNEurAaqSyn/im', NULL),
+(31, 'admin', '$2y$10$leXCHy1HjeSTvkaRxsvxGuwPml2Ii8ndqKcf1nqwfX8m4ul3aRhCe', NULL),
+(32, 'admin', '$2y$10$Vq0mF8dVDLNXAqSGl18soeC4U4sZ0yJNm7tMCOrQvzp94N5LkNZSi', NULL),
+(33, 'admin', '$2y$10$sKDMJtM6jFbM3y5ulVkP.uMrsMy6q7PJCYL3nl3qj/PT520C4kbzS', NULL),
+(34, 'admin', '$2y$10$/JS5Q64VmjxUyYJ3HLBhW.Aa0u2rEIlvKy89RbEMQ.8EgpoENlELm', NULL),
+(35, 'admin', '$2y$10$lzLmXmqEfXA3oEaS6MjAteWvFB0wNFqmLzBh3ujHc4lSgGjWH3Q1q', NULL),
+(36, 'admin', '$2y$10$QlGtUYWYVEndns6RnxOQAeJdEaQziHvZ5jGut5jU63.pDp2RvRNj2', NULL),
+(37, 'admin', '$2y$10$g8vcNGrxUbYnbGaNK4FD5O2FZWP1e9.fMJcMJLblLvY4ZE94rHn8K', NULL),
+(38, '', '$2y$10$6Ypi5kqF5dlxV/Do8eIFBO9hkqJmhYiMZxkhGB3Pp.Aw.iSk3SzN.', NULL),
+(39, '', '$2y$10$KMgXv7oZEfawXY.lVG9k6edLfYFr3DNK2HqJdCpS/rLmPb7bkG52q', NULL);
 
 --
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `basket`
+--
+ALTER TABLE `basket`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `category`
@@ -168,6 +224,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT для таблицы `basket`
+--
+ALTER TABLE `basket`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
+
+--
 -- AUTO_INCREMENT для таблицы `category`
 --
 ALTER TABLE `category`
@@ -189,13 +251,13 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
